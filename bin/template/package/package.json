@@ -1,0 +1,39 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "package",
+  "type": "module",
+  "author": "author",
+  "homepage": "",
+  "bugs": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "test": "ava -w",
+    "clear:ava": "rm -rf test/snapshots/",
+    "test:ts": "tsc --noEmit"
+  },
+  "keywords": [
+    "html",
+    "template"
+  ],
+  "files": [
+    "dist",
+    "!dist/**/*.map",
+    "types",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^5.1.0"
+  },
+  "ava": {
+    "workerThreads": false,
+    "files": [
+      "!**/fixtures/**",
+      "!**/public/**"
+    ]
+  }
+}
