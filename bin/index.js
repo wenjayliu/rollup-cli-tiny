@@ -2592,11 +2592,24 @@ const outputLICENSE = (path, author) => {
   `);
 };
 
+const __filename$1 = fileURLToPath(import.meta.url);
+const __dirname$1 = require$$1.dirname(__filename$1);
+var pack = (cwd, name) => {
+    console.log('__dirname : ' + __dirname$1);
+    const tpl = `${__dirname$1}/template/package`;
+    fse.copy(tpl, `./${name}`)
+        .then(() => {
+        outputGitignore(name);
+        outputLICENSE(name);
+        console.log('success!');
+    });
+};
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = require$$1.dirname(__filename);
-var pack = (cwd, name) => {
+var svelte = (cwd, name) => {
     console.log('__dirname : ' + __dirname);
-    const tpl = `${__dirname}/template/package`;
+    const tpl = `${__dirname}/template/svelte`;
     fse.copy(tpl, `./${name}`)
         .then(() => {
         outputGitignore(name);
@@ -3092,7 +3105,7 @@ var message = {
 };
 
 var name$1 = "rollup-cli-tiny";
-var version = "1.1.3";
+var version = "1.1.5";
 var description = "";
 var type$1 = "module";
 var main = "dist/index.js";
@@ -3163,6 +3176,10 @@ switch (type) {
     }
     case 'pack': {
         pack(cwd, name);
+        break;
+    }
+    case 'svelte': {
+        svelte(cwd, name);
         break;
     }
     case '-v': {

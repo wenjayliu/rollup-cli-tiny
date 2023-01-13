@@ -2,6 +2,7 @@
 // import fse from 'fs-extra'
 import init from './init'
 import pack from './pack'
+import svelte from './svelte'
 import message from './utils/message' // 终端字符串样式
 import pkg  from '../package.json'
 import { outputGitignore } from "./utils/writeComFile";
@@ -16,6 +17,10 @@ switch (type) {
     }
     case 'pack': {
       pack(cwd, name);
+        break;
+    }
+    case 'svelte': {
+      svelte(cwd, name);
         break;
     }
 
